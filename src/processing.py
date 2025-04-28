@@ -12,8 +12,7 @@ from typing import Any, Dict, List
 
 
 def filter_by_state(
-    operations: List[Dict[str, Any]],
-    state: str = "EXECUTED"
+    operations: List[Dict[str, Any]], state: str = "EXECUTED"
 ) -> List[Dict[str, Any]]:
     """
     Возвращает список словарей (операций), в которых значение по ключу 'state'
@@ -25,14 +24,13 @@ def filter_by_state(
     """
     filtered_operations = []
     for op in operations:
-        if op.get('state') == state:
+        if op.get("state") == state:
             filtered_operations.append(op)
     return filtered_operations
 
 
 def sort_by_date(
-    operations: List[Dict[str, Any]],
-    reverse: bool = True
+    operations: List[Dict[str, Any]], reverse: bool = True
 ) -> List[Dict[str, Any]]:
     """
     Возвращает новый список операций, отсортированный по дате (ключ 'date').
@@ -45,6 +43,6 @@ def sort_by_date(
     # Сортируем с использованием datetime.strptime
     return sorted(
         operations,
-        key=lambda x: datetime.strptime(x['date'], "%Y-%m-%dT%H:%M:%S.%f"),
-        reverse=reverse
+        key=lambda x: datetime.strptime(x["date"], "%Y-%m-%dT%H:%M:%S.%f"),
+        reverse=reverse,
     )
